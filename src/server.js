@@ -1,11 +1,14 @@
 //const express = require('express');
-const express = require('express');
+import express from 'express';
 const server = express();
+import routesPayment from './routes/payment.routes.js';
 
 const PORT = process.env.PORT || 3000;
 
-server.get("/",(req,res)=>{ res.send("Hello World " + new Date());
-});
+server.use(express.json());
+
+server.use("/api", routesPayment);
+
 
 server.listen(PORT,()=>{
     console.log('server is running on port ${PORT}');
